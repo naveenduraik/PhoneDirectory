@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import com.phonedirectory.dbconnector.DBConnector;
 import com.phonedirectory.entities.Department;
-import com.phonedirectory.entities.UserDetails;
 
 public class DepartmentDAO {
 	Statement statement;
@@ -23,17 +22,14 @@ public class DepartmentDAO {
 		try {
 			statement = connection.createStatement();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			statement.executeUpdate(create);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Department Object created successfully");			
-		return true;
+ 			return true;
     }
 	
 	
@@ -41,15 +37,12 @@ public class DepartmentDAO {
 		connection = DBConnector.getConnection();
 		resourceBundle = ResourceBundle.getBundle("mysql");
 		String insertContact = resourceBundle.getString("db.insertDepartment");
-		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = connection.prepareStatement(insertContact);
 			preparedStatement.setString(1,department.getDepartmentId());
 			preparedStatement.setString(2,department.getDepartmentName());
 			preparedStatement.setString(3,department.getDetails());		
-			preparedStatement.executeUpdate();
-			
-			System.out.println("Department details updated successfully");
+			preparedStatement.executeUpdate();			
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

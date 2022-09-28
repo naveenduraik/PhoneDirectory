@@ -53,7 +53,6 @@ public class Address {
 		this.userId = userId;
 	}
 	public Address() {
-		// TODO Auto-generated constructor stub
 	}
 	public int getAddressId() {
 		return addressId;

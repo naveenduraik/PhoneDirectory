@@ -26,11 +26,9 @@ public class ContactDAO {
 			statement.execute(create);
 
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Contact Object created successfully");
-		return true;
+	return true;
 		
 	}
 	
@@ -39,7 +37,6 @@ public class ContactDAO {
 		connection = DBConnector.getConnection();
 		resourceBundle = ResourceBundle.getBundle("mysql");
 		String insertContact = resourceBundle.getString("db.insertContact");
-		PreparedStatement preparedStatement;
 		try {
 			preparedStatement = connection.prepareStatement(insertContact);
 			preparedStatement.setInt(1,contact.getContact_id());

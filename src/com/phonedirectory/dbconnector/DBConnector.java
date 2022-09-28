@@ -20,7 +20,7 @@ public class DBConnector {
 			connection = DriverManager.getConnection(url, username,password);
 
 		} catch (ClassNotFoundException | SQLException e) {
-			// TODO Auto-generated catch block
+			
 			((Throwable) e).printStackTrace();
 		}
 		return connection;
