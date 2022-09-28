@@ -8,7 +8,6 @@ import java.util.ResourceBundle;
 
 import com.phonedirectory.dbconnector.DBConnector;
 import com.phonedirectory.entities.Address;
-import com.phonedirectory.entities.Department;
 
 public class AddressDAO {
 	
@@ -24,24 +23,22 @@ public class AddressDAO {
 		try {
 			statement = connection.createStatement();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
 			statement.executeUpdate(create);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Address Object created successfully");			
-		return true;
+/* 		System.out.println("Address Object created successfully");			
+ */		return true;
     }
 	
 	public boolean insertAddressDAO(Address address) {
 		connection = DBConnector.getConnection();
 		resourceBundle = ResourceBundle.getBundle("mysql");
 		String insertAddress = resourceBundle.getString("db.insertAddress");
-		PreparedStatement preparedStatement;
+		
 		try {
 			preparedStatement = connection.prepareStatement(insertAddress);
 			preparedStatement.setString(1,address.getT_doorNo());
@@ -61,8 +58,8 @@ public class AddressDAO {
 
 			preparedStatement.executeUpdate();
 			
-			System.out.println("Address details updated successfully");
-			
+/* 			System.out.println("Address details updated successfully");
+ */			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
