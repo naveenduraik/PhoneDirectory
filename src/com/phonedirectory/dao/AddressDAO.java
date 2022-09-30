@@ -15,8 +15,7 @@ public class AddressDAO {
 	Connection connection;
 	PreparedStatement preparedStatement;
 	ResourceBundle resourceBundle;
-	public boolean createAddressDAO() 
-	{		
+	public boolean createAddressDAO(){		
 		connection= DBConnector.getConnection();		
 		resourceBundle = ResourceBundle.getBundle("mysql");		
 		String create = resourceBundle.getString("db.createAddress");
@@ -30,8 +29,7 @@ public class AddressDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-/* 		System.out.println("Address Object created successfully");			
- */		return true;
+		return true;
     }
 	
 	public boolean insertAddressDAO(Address address) {
@@ -57,9 +55,7 @@ public class AddressDAO {
 			preparedStatement.setInt(13,address.get_UserId());			
 
 			preparedStatement.executeUpdate();
-			
-/* 			System.out.println("Address details updated successfully");
- */			
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}		
