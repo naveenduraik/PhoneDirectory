@@ -11,11 +11,12 @@ import java.util.Scanner;
 
 public class App {
 	public static void main(String[] args) {	
+		UserDetailsBO userDetailsBO = new UserDetailsBO();
 		System.out.println("Enter department details..");
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter DepartmentId");
 		String departmentId = scanner.next();
-		System.out.print("Enter departmentName");
+		System.out.println("Enter departmentName");
 		String departmentName = scanner.next();
 		System.out.println("Enter Department details");
 		String details = scanner.next();
@@ -39,18 +40,20 @@ public class App {
 		System.out.println("ConfirmPasskey");
 		String confirmPassKey = scanner.next();
 		System.out.println("Enter DepartmentId");
-		String department_Id = scanner.next();
+		String department_id = scanner.next();
 		System.out.println("Enter designation");
 		String designation = scanner.next();
 		UserDetails userDetails = new UserDetails(firstName,lastName,primaryEmailId,secondaryEmailId,passkey,confirmPassKey
-													,department_Id,designation);
+													,department_id,designation);
 		
-		UserDetailsBO userDetailsBO = new UserDetailsBO();
+		userDetailsBO = new UserDetailsBO();
 		userDetailsBO.createUserBO();
 		userDetailsBO.insertUserBO(userDetails);
 		userDetailsBO.displayUserList();
 		
+		
 		System.out.println("Enter Address details");
+		
 		Address address = new Address("1","welcome" , "welcome", "welcome","welcome",
 				"test", "test", "test", "test", "test", "test","test",10101);
 		AddressBO addressBO = new AddressBO();
@@ -58,10 +61,14 @@ public class App {
 		addressBO.insertAddressBO(address);
 		
 		System.out.println("Enter Contact details");
-		Contact contact = new Contact(5026,"+1","850.245.6059","850.225.7929",10101);		
+		Contact contact = new Contact(5029,"+1","850.245.6059","850.225.7929",10101);		
 		ContactBO contactBO = new ContactBO();
 		contactBO.createContactBO();
 		contactBO.insertContactBO(contact);
+
+		System.out.println("------User Phone Directory---");
+		System.out.println("UserId"+" "+" first Name "+" PrimaryContact "+" Secondary Contact");
+		userDetailsBO.displayContactBO();
 
 		scanner.close();
 	}

@@ -28,6 +28,10 @@ public class UserDetailsDAO {
 	String confirmPassKey;
 	String departmentId;
 	String designation;
+	String primaryMobileNumber;
+	String secondaryMobileNumber;
+	ResultSet resultSet;
+
 	public boolean createUserDAO() 
 	{		
 		connection= DBConnector.getConnection();		
@@ -68,14 +72,11 @@ public class UserDetailsDAO {
 		return true;		
 	}	
 	public List<UserDetails> displayUserDetails(){		
-		Connection con ; 
-		con = DBConnector.getConnection();		
-		PreparedStatement ps;
-		ResultSet resultSet;
+		connection = DBConnector.getConnection();		
 		List<UserDetails> userList =null;		
 		try {
-			ps = con.prepareStatement("select * from userdetails");
-			resultSet = ps.executeQuery();
+			preparedStatement = connection.prepareStatement("select * from userdetails");
+			resultSet = preparedStatement.executeQuery();
 			userList = new ArrayList<UserDetails>();		
 			while(resultSet.next()){
 				userId = resultSet.getInt(1);
@@ -90,7 +91,7 @@ public class UserDetailsDAO {
 				
 				userDetails  = new UserDetails(userId, firstName, lastName, primaryEmailId, secondaryEmailId, passKey, confirmPassKey, departmentId, designation);
 				userList.add(userDetails);	
-				System.out.println(userId + "-- "+ firstName+" -- "+lastName+"-- "+designation);
+				System.out.println(userId + "     "+ firstName+"       "+lastName+"     "+designation);
 			}
 			System.out.println("-----"+userList.size());
 			
@@ -100,4 +101,30 @@ public class UserDetailsDAO {
 	
 		return userList;
 	}
+
+
+	public void displayContact(){
+		connection= DBConnector.getConnection();
+		resourceBundle = ResourceBundle.getBundle("mysql");
+		String displayContact = resourceBundle.getString("db.phoneNumber");
+		try {
+			preparedStatement  = connection.prepareStatement(displayContact);
+			resultSet = preparedStatement.executeQuery();
+			while(resultSet.next()){
+				userId = resultSet.getInt("userId");
+				firstName = resultSet.getString("firstName");
+				primaryMobileNumber = resultSet.getString("primaryMobileNumber");
+				secondaryMobileNumber = resultSet.getString("secondaryMobileNumber");
+
+				System.out.println(userId+"        "+firstName+"        "+primaryMobileNumber+"        "+secondaryMobileNumber);
+			}
+			connection.close();
+	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
+
 }
+

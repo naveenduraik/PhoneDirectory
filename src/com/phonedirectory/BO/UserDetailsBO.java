@@ -23,4 +23,8 @@ public class UserDetailsBO {
 		return userDetailsDAO.displayUserDetails();
 		
 	}
+	public void displayContactBO(){
+		userDetailsDAO = new UserDetailsDAO();
+		userDetailsDAO.displayContact();
+	}
 }

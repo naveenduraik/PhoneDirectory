@@ -7,6 +7,10 @@ public class Contact {
 	private String secondaryMobileNumber;
 	private int userId;
 	
+	public Contact(String primaryMobileNumber,String secondaryMobileNumber){
+		this.primaryMobileNumber = primaryMobileNumber;
+		this.secondaryMobileNumber = secondaryMobileNumber;
+	}
 	
 	public Contact(int contact_id, String countryCode, String primaryMobileNumber, String secondaryMobileNumber,
 			int userId) {

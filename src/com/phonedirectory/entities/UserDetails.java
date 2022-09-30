@@ -11,7 +11,11 @@ public class UserDetails {
 	private String departmentId;
 	private String designation;
 
-	
+	public UserDetails(int userId,String firstName,String lastName){
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userId = userId;
+	}
 	 public UserDetails(int userId, String firstName, String lastName, String
 	  primaryEmailId, String secondaryEmailId, String passKey, String
 	 confirmPasskey, String departmentId, String designation) {
