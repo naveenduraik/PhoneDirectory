@@ -31,11 +31,11 @@ public class UserDetailsDAO {
 	String primaryMobileNumber;
 	String secondaryMobileNumber;
 	ResultSet resultSet;
-
+	String dataBundle = "mysql";
 	public boolean createUserDAO() 
 	{		
 		connection= DBConnector.getConnection();		
-		resourceBundle = ResourceBundle.getBundle("mysql");		
+		resourceBundle = ResourceBundle.getBundle(dataBundle);		
 		String create = resourceBundle.getString("db.createUser");
 		try {
 			statement = connection.createStatement();
@@ -105,7 +105,7 @@ public class UserDetailsDAO {
 
 	public void displayContact(){
 		connection= DBConnector.getConnection();
-		resourceBundle = ResourceBundle.getBundle("mysql");
+		resourceBundle = ResourceBundle.getBundle(dataBundle);
 		String displayContact = resourceBundle.getString("db.phoneNumber");
 		try {
 			preparedStatement  = connection.prepareStatement(displayContact);
